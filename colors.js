@@ -10,6 +10,7 @@ const colors = [
 const randomIntegerFromInterval = (min, max) => {
     return Math.floor(Math.random() * (max - min + 1) + min);
 };
+console.log(randomIntegerFromInterval);
 
 const body = document.querySelector('body');
 
@@ -19,7 +20,8 @@ const refs = {
 }
 createColors = () => {
     refs.startBtn.setAttribute('disabled')
-    const color = randomIntegerFromInterval();
+    const color = colors[randomIntegerFromInterval(0, colors.length - 1)];
+    console.log(color);
     body.style.backgroundColor = color;
     refs.startBtn.removeAttribute('disabled');
 }
