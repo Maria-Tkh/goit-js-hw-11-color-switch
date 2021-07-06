@@ -19,11 +19,9 @@ const refs = {
     stopBtn: document.querySelector('[data-action="stop"]'),
 }
 createColors = () => {
-    refs.startBtn.setAttribute('disabled')
     const color = colors[randomIntegerFromInterval(0, colors.length - 1)];
     console.log(color);
     body.style.backgroundColor = color;
-    refs.startBtn.removeAttribute('disabled');
 }
 
 
@@ -34,7 +32,7 @@ refs.stopBtn.addEventListener('click', onStopBtnClick);
 let intervalId = null;
 
 function onStartBtnClick() {
-    // console.log('click');
+    refs.startBtn.setAttribute('disabled', true);
     intervalId = setInterval(() => {
         createColors();
     }, 1000);
@@ -42,7 +40,7 @@ function onStartBtnClick() {
 
 
 function onStopBtnClick() {
-    // console.log('click2');
     clearInterval(intervalId);
+    refs.startBtn.removeAttribute('disabled', true);
 }
 
